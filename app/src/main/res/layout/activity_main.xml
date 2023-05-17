@@ -39,8 +39,6 @@
         android:layout_width="317dp"
         android:layout_height="21dp"
         android:progressDrawable="@drawable/custom_progressbar"
-        android:progressTint="@color/blue_app"
-        android:progressTintMode="add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
