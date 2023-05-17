@@ -7,6 +7,20 @@
     android:background="@color/black_app"
     tools:context=".ProfileActivity">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="257dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/ubuntu_light"
+        android:text="@string/text1"
+        android:textColor="#8E8E8E"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.558"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="322dp"
@@ -17,49 +31,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.209"
-        app:srcCompat="@drawable/pogba" />
+        app:srcCompat="@drawable/player_1" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="177dp"
         android:layout_height="67dp"
         android:fontFamily="@font/ubuntu_bold"
-        android:text="Start it"
+        android:text="@string/start"
         android:textColor="@color/white"
         app:backgroundTint="@color/blue_app"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.731" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.221" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="239dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/ubuntu_bold"
-        android:text="Discover all"
+        android:text="@string/intro_1"
         android:textColor="#FFFFFF"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.437"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.359" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/ubuntu_bold"
-        android:text="about football"
-        android:textColor="#FFFFFF"
         android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.075" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

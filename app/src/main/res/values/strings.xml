@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">FootballFantasy</string>
+    <string name="intro_1">Discover all about football</string>
+    <string name="text1">Choose your favorite football team and move your team to a Champions League Final. Let’s get start it!</string>
+    <string name="start">Start it</string>
+    <string name="e_login">Enter your login:</string>
+    <string name="login">Login</string>
 </resources>
