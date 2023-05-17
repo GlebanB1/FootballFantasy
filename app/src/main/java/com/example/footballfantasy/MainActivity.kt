@@ -2,6 +2,8 @@ package com.example.footballfantasy
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.content.Intent
+import android.os.Handler
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,5 +17,12 @@ class MainActivity : AppCompatActivity() {
 
 
         supportActionBar?.hide()
+
+        Handler().postDelayed({
+            val intent = Intent(this@MainActivity, ProfileActivity::class.java)
+            startActivity(intent)
+            finish()
+        }, 3000)
+
     }
 }
