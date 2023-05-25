@@ -20,21 +20,21 @@ val COL_COLOR = "color"
 
 data class FootballClub(val clubName: String, val country: String, val managerName: String, val color: String)
 
-class DataBaseHandler(private val context: Context) : SQLiteOpenHelper(context, DB_NAME, null, 1) {
+class DataBaseHandler(private val context: Context) : SQLiteOpenHelper(context, DB_NAME, null, 2) {
 
     override fun onCreate(db: SQLiteDatabase?) {
         val createUserTable = "CREATE TABLE $TABLE_NAME_USERS (" +
                 "$COL_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "$COL_LOGIN VARCHAR(256))"
+                "$COL_LOGIN TEXT)"
         db?.execSQL(createUserTable)
 
         val createClubTable = "CREATE TABLE $TABLE_NAME_CLUBS (" +
                 "$COL_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "$COL_LOGIN VARCHAR(256), " +
-                "$COL_CLUB_NAME VARCHAR(256), " +
-                "$COL_COUNTRY VARCHAR(256), " +
-                "$COL_MANAGER_NAME VARCHAR(256), " +
-                "$COL_COLOR VARCHAR(256))"
+                "$COL_LOGIN TEXT, " +
+                "$COL_CLUB_NAME TEXT, " +
+                "$COL_COUNTRY TEXT, " +
+                "$COL_MANAGER_NAME TEXT, " +
+                "$COL_COLOR TEXT)"
         db?.execSQL(createClubTable)
     }
 

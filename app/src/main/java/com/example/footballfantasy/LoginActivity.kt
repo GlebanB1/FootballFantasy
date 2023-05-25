@@ -35,6 +35,7 @@ class LoginActivity : AppCompatActivity() {
                     val user = User(login)
                     val insertResult = db.insertData(user)
                     if (insertResult != -1L) {
+                        saveLogin(login) // Save the login using shared preferences
                         val intent = Intent(this@LoginActivity, ClubCreation::class.java)
                         startActivity(intent)
                     }
@@ -43,6 +44,12 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please enter a login", Toast.LENGTH_SHORT).show()
             }
         }
+    }
 
+    private fun saveLogin(login: String) {
+        val sharedPreferences = getSharedPreferences("LoginPref", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("login", login)
+        editor.apply()
     }
 }
