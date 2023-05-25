@@ -21,6 +21,7 @@ class ClubCreation : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_club_creation)
+        supportActionBar?.hide()
 
         dbHandler = DataBaseHandler(this)
 
