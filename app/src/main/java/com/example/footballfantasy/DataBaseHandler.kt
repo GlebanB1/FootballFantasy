@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 import android.widget.Toast
 
 val DB_NAME = "Login_db"
@@ -12,15 +13,13 @@ val TABLE_NAME_USERS = "Users"
 val COL_LOGIN = "login"
 val COL_ID = "id"
 
-val TABLE_NAME_CLUBS = "FootballClubs"
-val COL_CLUB_NAME = "clubName"
-val COL_COUNTRY = "country"
-val COL_MANAGER_NAME = "managerName"
-val COL_COLOR = "color"
+data class User(val login: String)
 
 data class FootballClub(val clubName: String, val country: String, val managerName: String, val color: String)
 
-class DataBaseHandler(private val context: Context) : SQLiteOpenHelper(context, DB_NAME, null, 2) {
+class DataBaseHandler(private val context: Context, private val login: String) : SQLiteOpenHelper(context, DB_NAME, null, 2) {
+
+    val TABLE_NAME_CLUBS = "FootballClubs_$login" // Use a unique table name for each login
 
     override fun onCreate(db: SQLiteDatabase?) {
         val createUserTable = "CREATE TABLE $TABLE_NAME_USERS (" +
@@ -63,7 +62,7 @@ class DataBaseHandler(private val context: Context) : SQLiteOpenHelper(context, 
         return result
     }
 
-    fun insertClub(login: String, club: FootballClub): Long {
+    fun insertClub(club: FootballClub): Long {
         val db = this.writableDatabase
         val contentValues = ContentValues()
         contentValues.put(COL_LOGIN, login)
@@ -90,7 +89,17 @@ class DataBaseHandler(private val context: Context) : SQLiteOpenHelper(context, 
 
     fun getClubTableData(): Cursor? {
         val db = this.readableDatabase
-        val query = "SELECT * FROM $TABLE_NAME_CLUBS"
-        return db.rawQuery(query, null)
+        val query = "SELECT * FROM $TABLE_NAME_CLUBS WHERE $COL_LOGIN = ?"
+        val cursor = db.rawQuery(query, arrayOf(login))
+
+        // Add log statements for debugging
+        Log.d("DataBaseHandler", "Query: $query")
+        cursor?.let {
+            Log.d("DataBaseHandler", "Result count: ${it.count}")
+            it.moveToFirst()
+        }
+
+        return cursor
     }
+
 }

@@ -93,5 +93,11 @@ class LoginActivity : AppCompatActivity() {
         val editor = sharedPreferences.edit()
         editor.putString("login", login)
         editor.apply()
+
+        val intent = Intent(this@LoginActivity, GameActivity::class.java)
+        intent.putExtra("login", login)
+        startActivity(intent)
     }
+
+
 }
