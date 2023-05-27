@@ -87,4 +87,10 @@ class DataBaseHandler(private val context: Context) : SQLiteOpenHelper(context, 
         cursor?.close()
         return exists
     }
+
+    fun getClubTableData(): Cursor? {
+        val db = this.readableDatabase
+        val query = "SELECT * FROM $TABLE_NAME_CLUBS"
+        return db.rawQuery(query, null)
+    }
 }

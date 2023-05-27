@@ -26,7 +26,7 @@ class StartGame : AppCompatActivity() {
         }
 
         btnStart.setOnClickListener {
-            val intent = Intent(this, ClubCreation::class.java)
+            val intent = Intent(this, GameActivity::class.java)
             startActivity(intent)
         }
     }
