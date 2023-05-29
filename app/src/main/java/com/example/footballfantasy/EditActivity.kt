@@ -1,5 +1,6 @@
 package com.example.footballfantasy
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -22,8 +23,25 @@ class EditActivity : AppCompatActivity() {
         login = intent.getStringExtra("login") ?: ""
         dbHelper = DataBaseHandler(this)
 
+        val btnPlay = findViewById<Button>(R.id.btnPlay)
         val cursor = dbHelper.getClubTableData(login)
         val textViewClubTable = findViewById<TextView>(R.id.textViewClubTable1)
+
+        btnPlay.setOnClickListener {
+            if (login != null) {
+                val clubs = dbHelper.getClubsByLogin(login!!)
+                if (clubs.isNotEmpty()) {
+                    val intent = Intent(this, MatchActivity::class.java)
+                    intent.putExtra("login", login)
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(this, "No clubs found for the login", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(this, "No login found", Toast.LENGTH_SHORT).show()
+            }
+        }
+
         if (cursor != null && cursor.moveToFirst()) {
             val stringBuilder = StringBuilder()
 

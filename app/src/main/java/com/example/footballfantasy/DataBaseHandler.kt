@@ -1,5 +1,4 @@
 package com.example.footballfantasy
-
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
@@ -15,7 +14,6 @@ val TABLE_NAME_USERS = "Users"
 val COL_LOGIN = "login"
 val COL_ID = "id"
 
-
 data class FootballClub(val clubName: String, val country: String, val managerName: String, val clubRating: String)
 
 class DataBaseHandler(private val context: Context) : SQLiteOpenHelper(context, DB_NAME, null, 2) {
@@ -25,8 +23,6 @@ class DataBaseHandler(private val context: Context) : SQLiteOpenHelper(context, 
     val COL_COUNTRY = "country"
     val COL_MANAGER_NAME = "managerName"
     val COL_CLUB_RATING = "clubRating"
-
-
 
     override fun onCreate(db: SQLiteDatabase?) {
         val createUserTable = "CREATE TABLE $TABLE_NAME_USERS (" +
@@ -119,6 +115,15 @@ class DataBaseHandler(private val context: Context) : SQLiteOpenHelper(context, 
     fun getClubsByLogin(login: String): List<FootballClub> {
         val clubList = mutableListOf<FootballClub>()
         val db = readableDatabase
+
+        // Retrieve the login ID from the Users table
+        val loginId = getLoginId(login)
+
+        if (loginId == -1L) {
+            // Handle the case where the login is not found
+            return clubList
+        }
+
         val clubTableName = TABLE_NAME_PREFIX + login
         try {
             val cursor = db.rawQuery("SELECT * FROM $clubTableName", null)
@@ -143,6 +148,20 @@ class DataBaseHandler(private val context: Context) : SQLiteOpenHelper(context, 
         return clubList
     }
 
+    private fun getLoginId(login: String): Long {
+        val db = readableDatabase
+        val query = "SELECT $COL_ID FROM $TABLE_NAME_USERS WHERE $COL_LOGIN = ?"
+        val cursor = db.rawQuery(query, arrayOf(login))
+        val loginId = if (cursor.moveToFirst()) {
+            cursor.getLong(cursor.getColumnIndex(COL_ID))
+        } else {
+            -1L // Return -1 if the login is not found
+        }
+        cursor.close()
+        return loginId
+    }
+
+
     fun updateClub(login: String, club: FootballClub, newClub: FootballClub) {
         val db = writableDatabase
         val clubTableName = TABLE_NAME_PREFIX + login
@@ -159,9 +178,6 @@ class DataBaseHandler(private val context: Context) : SQLiteOpenHelper(context, 
         )
         db.close()
     }
-
-
-
 
     fun deleteClub(login: String, club: FootballClub) {
         val db = writableDatabase
@@ -212,8 +228,4 @@ class DataBaseHandler(private val context: Context) : SQLiteOpenHelper(context, 
         val alertDialog = builder.create()
         alertDialog.show()
     }
-
-
-
-
 }

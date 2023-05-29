@@ -15,7 +15,7 @@ class GameActivity : AppCompatActivity() {
         val btnStart = findViewById<Button>(R.id.btnStart1)
 
         btnStart.setOnClickListener {
-            val intent = Intent(this, ProfileActivity::class.java)
+            val intent = Intent(this, MatchActivity::class.java)
             startActivity(intent)
         }
 
