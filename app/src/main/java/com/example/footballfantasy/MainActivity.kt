@@ -7,6 +7,8 @@ import android.content.Intent
 import android.os.Handler
 import android.widget.ProgressBar
 
+// Riyad Ilyasov 211RDB371 Glebs Bondarevs 211RDB375
+
 class MainActivity : AppCompatActivity() {
 
 
