@@ -1,4 +1,5 @@
 package com.example.footballfantasy
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
@@ -18,8 +19,7 @@ class ClubCreation : AppCompatActivity() {
     private lateinit var clubNameEditText: EditText
     private lateinit var countryEditText: EditText
     private lateinit var managerNameEditText: EditText
-    private lateinit var clubRaitingEditText: EditText
-    private lateinit var colorSpinner: Spinner
+    private lateinit var clubRatingEditText: EditText
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,56 +27,20 @@ class ClubCreation : AppCompatActivity() {
         setContentView(R.layout.activity_club_creation)
         supportActionBar?.hide()
 
+        // Initialize the database handler
         dbHandler = DataBaseHandler(this)
-
-        val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
 
         // Retrieve login from intent extra
         val sharedPreferences = getSharedPreferences("LoginPref", MODE_PRIVATE)
         login = sharedPreferences.getString("login", "") ?: ""
 
+        // Initialize the EditText views
         clubNameEditText = findViewById(R.id.eclubname)
         countryEditText = findViewById(R.id.ecountry)
         managerNameEditText = findViewById(R.id.emanager)
-        clubRaitingEditText = findViewById(R.id.erating)
+        clubRatingEditText = findViewById(R.id.erating)
 
-        // Set editor action listener for clubNameEditText
-        clubNameEditText.setOnEditorActionListener { _, actionId, event ->
-            if (actionId == EditorInfo.IME_ACTION_NEXT || event?.keyCode == KeyEvent.KEYCODE_ENTER) {
-                countryEditText.requestFocus()
-                true
-            } else {
-                false
-            }
-        }
-
-        // Set editor action listener for countryEditText
-        countryEditText.setOnEditorActionListener { _, actionId, event ->
-            if (actionId == EditorInfo.IME_ACTION_NEXT || event?.keyCode == KeyEvent.KEYCODE_ENTER) {
-                managerNameEditText.requestFocus()
-                true
-            } else {
-                false
-            }
-        }
-
-        // Set editor action listener for managerNameEditText
-        // Set editor action listener for managerNameEditText
-        managerNameEditText.setOnEditorActionListener { _, actionId, event ->
-            if (actionId == EditorInfo.IME_ACTION_DONE || event?.keyCode == KeyEvent.KEYCODE_ENTER) {
-                // Hide the keyboard
-                val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-                inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
-
-                colorSpinner.performClick() // Programmatically open the color spinner
-                true
-            } else {
-                false
-            }
-        }
-
-
+        // Set click listener for the insertClubButton
         val insertClubButton = findViewById<Button>(R.id.insertClubButton)
         insertClubButton.setOnClickListener { insertClub() }
     }
@@ -85,28 +49,24 @@ class ClubCreation : AppCompatActivity() {
         val clubName = clubNameEditText.text.toString().trim()
         val country = countryEditText.text.toString().trim()
         val managerName = managerNameEditText.text.toString().trim()
-        val color = colorSpinner.selectedItem.toString()
+        val clubRating = clubRatingEditText.text.toString().trim()
 
-        if (clubName.isEmpty() || country.isEmpty() || managerName.isEmpty()) {
-            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        val club = FootballClub(clubName, country, managerName, color)
-        val result = dbHandler.insertClub(login, club)
-
-        if (result != -1L) {
-            Toast.makeText(this, "Club inserted successfully", Toast.LENGTH_SHORT).show()
-            clearFields()
+        if (clubName.isNotEmpty() && country.isNotEmpty() && managerName.isNotEmpty() && clubRating.isNotEmpty()) {
+            val footballClub = FootballClub(clubName, country, managerName, clubRating)
+            val result = dbHandler.insertClub(login, footballClub)
+            if (result != -1L) {
+                Toast.makeText(this, "Club inserted successfully", Toast.LENGTH_SHORT).show()
+                clearFields()
+            }
         } else {
-            Toast.makeText(this, "Failed to insert club", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
         }
     }
-
 
     private fun clearFields() {
         clubNameEditText.text.clear()
         countryEditText.text.clear()
         managerNameEditText.text.clear()
+        clubRatingEditText.text.clear()
     }
 }
