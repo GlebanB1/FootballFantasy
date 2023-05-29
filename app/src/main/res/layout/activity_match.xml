@@ -4,21 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black_app"
     tools:context=".MatchActivity">
 
     <TextView
         android:id="@+id/textViewTeam1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:background="@android:color/white"
+        android:textColor="@android:color/black"
+        android:padding="8dp"
         android:text="Team 1:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:padding="8dp"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/spinnerTeam1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@android:color/white"
         app:layout_constraintStart_toEndOf="@id/textViewTeam1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/textViewTeam1"
@@ -29,15 +35,19 @@
         android:id="@+id/textViewTeam2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:background="@android:color/white"
+        android:textColor="@android:color/black"
+        android:padding="8dp"
         android:text="Team 2:"
         app:layout_constraintStart_toStartOf="@id/textViewTeam1"
-        app:layout_constraintTop_toBottomOf="@id/spinnerTeam1"
-        android:padding="8dp"/>
+        app:layout_constraintTop_toBottomOf="@id/spinnerTeam1" />
 
     <Spinner
         android:id="@+id/spinnerTeam2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@android:color/white"
         app:layout_constraintStart_toEndOf="@id/textViewTeam2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/textViewTeam2"
@@ -48,21 +58,29 @@
         android:id="@+id/buttonSimulateMatch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="168dp"
+        android:fontFamily="@font/ubuntu_bold"
+        android:onClick="simulateMatch"
         android:text="Simulate Match"
+        android:textColor="#FEFEFE"
+        android:textSize="14sp"
+        app:backgroundTint="@color/blue_app"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinnerTeam2"
-        android:layout_marginTop="16dp"
-        android:onClick="simulateMatch"/>
+        app:layout_constraintTop_toBottomOf="@id/spinnerTeam2" />
 
     <TextView
         android:id="@+id/textViewMatchResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="132dp"
+        android:background="@android:color/white"
+        android:padding="8dp"
         android:text=""
+        android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonSimulateMatch"
-        android:layout_marginTop="16dp"
-        android:padding="8dp"/>
+        app:layout_constraintTop_toBottomOf="@id/buttonSimulateMatch" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
