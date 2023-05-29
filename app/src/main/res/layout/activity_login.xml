@@ -66,7 +66,6 @@
         android:textColor="#0B1E51"
         android:textColorHint="@color/blue_app"
         android:textSize="15sp"
-
         app:layout_constraintBottom_toTopOf="@+id/btnInsert"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

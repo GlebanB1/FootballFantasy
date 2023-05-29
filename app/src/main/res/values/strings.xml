@@ -5,4 +5,13 @@
     <string name="start">Start it</string>
     <string name="e_login">Enter your login:</string>
     <string name="login">Login</string>
+    <string name="Start_game">Start game</string>
+    <string name="edit">Editor</string>
+    <string name="club">Club name:</string>
+    <string name="country">Club country:</string>
+    <string name="manager">Club manager:</string>
+    <string name="rating">Club rating:</string>
+    <string name="create">Create club</string>
+    <string name="exit">Exit</string>
+
 </resources>

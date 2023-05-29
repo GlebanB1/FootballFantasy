@@ -18,6 +18,7 @@ class ClubCreation : AppCompatActivity() {
     private lateinit var clubNameEditText: EditText
     private lateinit var countryEditText: EditText
     private lateinit var managerNameEditText: EditText
+    private lateinit var clubRaitingEditText: EditText
     private lateinit var colorSpinner: Spinner
 
 
@@ -35,10 +36,10 @@ class ClubCreation : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("LoginPref", MODE_PRIVATE)
         login = sharedPreferences.getString("login", "") ?: ""
 
-        clubNameEditText = findViewById(R.id.etvClubName)
-        countryEditText = findViewById(R.id.etvCountry)
-        managerNameEditText = findViewById(R.id.etvMgName)
-        colorSpinner = findViewById(R.id.colorSpinner)
+        clubNameEditText = findViewById(R.id.eclubname)
+        countryEditText = findViewById(R.id.ecountry)
+        managerNameEditText = findViewById(R.id.emanager)
+        clubRaitingEditText = findViewById(R.id.erating)
 
         // Set editor action listener for clubNameEditText
         clubNameEditText.setOnEditorActionListener { _, actionId, event ->

@@ -9,50 +9,61 @@
 
     <Button
         android:id="@+id/btnStart"
-        android:layout_width="165dp"
-        android:layout_height="50dp"
-        app:backgroundTint="@color/blue_app"
+        android:layout_width="172dp"
+        android:layout_height="56dp"
         android:fontFamily="@font/ubuntu_bold"
-        android:text="Start game"
+        android:text="@string/Start_game"
         android:textColor="#FEFEFE"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.264" />
+        app:backgroundTint="@color/blue_app"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view"
+        app:layout_constraintVertical_bias="0.427" />
 
     <Button
         android:id="@+id/btnEdit"
-        android:layout_width="174dp"
-        android:layout_height="46dp"
-        app:backgroundTint="@color/blue_app"
+        android:layout_width="172dp"
+        android:layout_height="56dp"
         android:fontFamily="@font/ubuntu_bold"
-        android:text="Editor"
+        android:text="@string/edit"
         android:textColor="#FEFEFE"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:backgroundTint="@color/blue_app"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toBottomOf="@+id/btnStart"
-        app:layout_constraintVertical_bias="0.34" />
+        app:layout_constraintVertical_bias="0.028"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/btnExit"
         android:layout_width="99dp"
         android:layout_height="56dp"
-        app:backgroundTint="@color/blue_app"
         android:fontFamily="@font/ubuntu_bold"
-        android:text="Exit"
+        android:text="@string/exit"
         android:textColor="#FEFEFE"
         android:textSize="14sp"
+        app:backgroundTint="@color/blue_app"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toBottomOf="@+id/btnEdit"
+        app:layout_constraintVertical_bias="0.951" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="353dp"
+        android:layout_height="681dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnEdit" />
-
-
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

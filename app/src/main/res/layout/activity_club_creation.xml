@@ -7,46 +7,6 @@
     android:background="@color/black_app"
     tools:context=".LoginActivity">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout3"
-        android:layout_width="300dp"
-        android:layout_height="55dp"
-        android:layout_centerHorizontal="true"
-        android:background="#A7A2A2"
-        android:padding="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etvMgName"
-        app:layout_constraintVertical_bias="0.119">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/ubuntu_bold"
-            android:text="Color:"
-            android:textColor="#2F2D32"
-            android:textSize="16dp"
-            android:textStyle="bold" />
-    </RelativeLayout>
-
-
-    <Spinner
-        android:id="@+id/colorSpinner"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/blue_app"
-        android:entries="@array/color_options"
-        android:textColor="#0B1E51"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/etvMgName"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etvMgName"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout3"
-        app:layout_constraintVertical_bias="0.173" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -55,11 +15,11 @@
         android:layout_centerInParent="true"
         android:background="#243B64"
         android:padding="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.024">
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toTopOf="@+id/view2"
+        app:layout_constraintVertical_bias="0.027">
 
     </RelativeLayout>
 
@@ -78,34 +38,11 @@
         app:layout_constraintStart_toStartOf="@+id/relativeLayout"
         app:layout_constraintTop_toTopOf="@+id/relativeLayout" />
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout2"
-        android:layout_width="300dp"
-        android:layout_height="55dp"
-        android:layout_centerHorizontal="true"
-        android:background="#A7A2A2"
-        android:padding="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
-        app:layout_constraintVertical_bias="0.119">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/ubuntu_bold"
-            android:text="Club name:"
-            android:textColor="#2F2D32"
-            android:textSize="16dp"
-            android:textStyle="bold" />
-    </RelativeLayout>
 
     <EditText
-        android:id="@+id/etvClubName"
-        android:layout_width="284dp"
-        android:layout_height="25dp"
+        android:id="@+id/eclubname"
+        android:layout_width="237dp"
+        android:layout_height="40dp"
         android:background="@drawable/custom_input"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -115,15 +52,15 @@
         android:textColor="#0B1E51"
         android:textColorHint="@color/blue_app"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/etvCountry"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2" />
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <EditText
-        android:id="@+id/etvCountry"
-        android:layout_width="284dp"
-        android:layout_height="25dp"
+        android:id="@+id/ecountry"
+        android:layout_width="237dp"
+        android:layout_height="40dp"
         android:background="@drawable/custom_input"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -133,17 +70,15 @@
         android:textColor="#0B1E51"
         android:textColorHint="@color/blue_app"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/etvMgName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
-        app:layout_constraintVertical_bias="0.719" />
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <EditText
-        android:id="@+id/etvMgName"
-        android:layout_width="284dp"
-        android:layout_height="25dp"
+        android:id="@+id/emanager"
+        android:layout_width="237dp"
+        android:layout_height="40dp"
         android:background="@drawable/custom_input"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -153,24 +88,115 @@
         android:textColor="#0B1E51"
         android:textColorHint="@color/blue_app"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.527"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
-        app:layout_constraintVertical_bias="0.628" />
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <EditText
+        android:id="@+id/erating"
+        android:layout_width="237dp"
+        android:layout_height="40dp"
+        android:background="@drawable/custom_input"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:fontFamily="@font/ubuntu_bold"
+        android:maxLength="10"
+        android:paddingLeft="10dp"
+        android:textColor="#0B1E51"
+        android:textColorHint="@color/blue_app"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/insertClubButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+        android:layout_width="172dp"
+        android:layout_height="56dp"
+        android:fontFamily="@font/ubuntu_bold"
+        android:text="@string/create"
+        android:textColor="#FEFEFE"
+        android:textSize="14sp"
+        app:backgroundTint="@color/blue_app"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/erating" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="403dp"
+        android:layout_height="711dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etvCountry"
-        app:layout_constraintVertical_bias="0.796" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="143dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/ubuntu_bold"
+        android:gravity=""
+        android:text="@string/rating"
+        android:textColor="#FEFEFE"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintHorizontal_bias="0.329"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emanager" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="143dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/ubuntu_bold"
+        android:gravity=""
+        android:text="@string/manager"
+        android:textColor="#FEFEFE"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.314"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/ecountry" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="143dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/ubuntu_bold"
+        android:gravity=""
+        android:text="@string/country"
+        android:textColor="#FEFEFE"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintHorizontal_bias="0.319"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/eclubname" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="143dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="64dp"
+        android:fontFamily="@font/ubuntu_bold"
+        android:gravity=""
+        android:text="@string/club"
+        android:textColor="#FEFEFE"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.314"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
