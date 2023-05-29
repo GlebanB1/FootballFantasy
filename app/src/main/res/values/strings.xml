@@ -8,6 +8,8 @@
     <string name="Start_game">Start game</string>
     <string name="edit">Editor</string>
     <string name="add">Add</string>
+    <string name="edit1">Edit</string>
+    <string name="delete">Delete</string>
     <string name="club">Club name:</string>
     <string name="country">Club country:</string>
     <string name="manager">Club manager:</string>

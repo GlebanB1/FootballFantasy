@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 
 val DB_NAME = "Login_db"
 val TABLE_NAME_USERS = "Users"
@@ -142,7 +143,7 @@ class DataBaseHandler(private val context: Context) : SQLiteOpenHelper(context, 
         return clubList
     }
 
-    fun updateClub(login: String, oldClub: FootballClub, newClub: FootballClub) {
+    fun updateClub(login: String, club: FootballClub, newClub: FootballClub) {
         val db = writableDatabase
         val clubTableName = TABLE_NAME_PREFIX + login
         val contentValues = ContentValues()
@@ -150,16 +151,69 @@ class DataBaseHandler(private val context: Context) : SQLiteOpenHelper(context, 
         contentValues.put(COL_COUNTRY, newClub.country)
         contentValues.put(COL_MANAGER_NAME, newClub.managerName)
         contentValues.put(COL_CLUB_RATING, newClub.clubRating)
-        db.update(clubTableName, contentValues, "$COL_CLUB_NAME = ? AND $COL_COUNTRY = ? AND $COL_MANAGER_NAME = ? AND $COL_CLUB_RATING = ?", arrayOf(oldClub.clubName, oldClub.country, oldClub.managerName, oldClub.clubRating))
+        db.update(
+            clubTableName,
+            contentValues,
+            "$COL_CLUB_NAME = ? AND $COL_COUNTRY = ? AND $COL_MANAGER_NAME = ? AND $COL_CLUB_RATING = ?",
+            arrayOf(club.clubName, club.country, club.managerName, club.clubRating)
+        )
         db.close()
     }
+
+
+
 
     fun deleteClub(login: String, club: FootballClub) {
         val db = writableDatabase
         val clubTableName = TABLE_NAME_PREFIX + login
-        db.delete(clubTableName, "$COL_CLUB_NAME = ? AND $COL_COUNTRY = ? AND $COL_MANAGER_NAME = ? AND $COL_CLUB_RATING = ?", arrayOf(club.clubName, club.country, club.managerName, club.clubRating))
+        val whereClause = "$COL_CLUB_NAME = ? AND $COL_COUNTRY = ? AND $COL_MANAGER_NAME = ? AND $COL_CLUB_RATING = ?"
+        val whereArgs = arrayOf(club.clubName, club.country, club.managerName, club.clubRating)
+        db.delete(clubTableName, whereClause, whereArgs)
         db.close()
     }
+
+    fun deleteAllClubs(login: String) {
+        val clubList = getClubsByLogin(login)
+
+        if (clubList.isEmpty()) {
+            Toast.makeText(context, "No clubs found for this login.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val clubNames = clubList.map { it.clubName }
+
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("Select a club to delete")
+
+        builder.setItems(clubNames.toTypedArray()) { _, position ->
+            val selectedClub = clubList[position]
+            val dialogBuilder = AlertDialog.Builder(context)
+            dialogBuilder.setTitle("Delete Club")
+            dialogBuilder.setMessage("Are you sure you want to delete ${selectedClub.clubName}?")
+
+            dialogBuilder.setPositiveButton("Yes") { dialog, _ ->
+                deleteClub(login, selectedClub)
+                Toast.makeText(context, "Club deleted successfully", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+            }
+
+            dialogBuilder.setNegativeButton("No") { dialog, _ ->
+                dialog.dismiss()
+            }
+
+            val alertDialog = dialogBuilder.create()
+            alertDialog.show()
+        }
+
+        builder.setNegativeButton("Cancel") { dialog, _ ->
+            dialog.dismiss()
+        }
+
+        val alertDialog = builder.create()
+        alertDialog.show()
+    }
+
+
 
 
 }

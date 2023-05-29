@@ -24,8 +24,18 @@ class StartGame : AppCompatActivity() {
         val btnAdd = findViewById<Button>(R.id.btnAdd)
 
         btnEdit.setOnClickListener {
-            val intent = Intent(this, EditActivity::class.java)
-            startActivity(intent)
+            if (login != null) {
+                val clubs = dbHandler.getClubsByLogin(login!!)
+                if (clubs.isNotEmpty()) {
+                    val intent = Intent(this, EditActivity::class.java)
+                    intent.putExtra("login", login)
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(this, "No clubs found for the login", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(this, "No login found", Toast.LENGTH_SHORT).show()
+            }
         }
 
         btnAdd.setOnClickListener {
