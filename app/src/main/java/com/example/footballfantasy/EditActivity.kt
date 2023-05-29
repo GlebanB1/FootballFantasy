@@ -129,6 +129,8 @@ class EditActivity : AppCompatActivity() {
     }
 
 
+    // ...
+
     private fun editClub() {
         val clubList = dbHelper.getClubsByLogin(login)
 
@@ -146,33 +148,49 @@ class EditActivity : AppCompatActivity() {
             val selectedClub = clubList[position]
             val oldManagerName = selectedClub.managerName
 
-            val inputLayout = EditText(this)
-            inputLayout.setText(oldManagerName)
+            val inputLayoutManager = EditText(this)
+            inputLayoutManager.setText(oldManagerName)
 
-            val dialogBuilder = AlertDialog.Builder(this)
-            dialogBuilder.setTitle("Edit Manager Name")
-            dialogBuilder.setView(inputLayout)
+            val dialogBuilderManager = AlertDialog.Builder(this)
+            dialogBuilderManager.setTitle("Edit Manager Name")
+            dialogBuilderManager.setView(inputLayoutManager)
 
-            dialogBuilder.setPositiveButton("Save") { dialog, _ ->
-                val newManagerName = inputLayout.text.toString()
+            dialogBuilderManager.setPositiveButton("Next") { dialog, _ ->
+                val newManagerName = inputLayoutManager.text.toString()
 
                 if (newManagerName.isNotEmpty()) {
-                    val newClub = selectedClub.copy(managerName = newManagerName)
-                    dbHelper.updateClub(login, selectedClub, newClub)
-                    Toast.makeText(this, "Manager name updated successfully", Toast.LENGTH_SHORT).show()
-                    dialog.dismiss()
-                    refreshClubTable()
+                    val inputLayoutRating = EditText(this)
+                    inputLayoutRating.setText(selectedClub.clubRating)
+
+                    val dialogBuilderRating = AlertDialog.Builder(this)
+                    dialogBuilderRating.setTitle("Edit Club Rating")
+                    dialogBuilderRating.setView(inputLayoutRating)
+
+                    dialogBuilderRating.setPositiveButton("Save") { _, _ ->
+                        val newClub = selectedClub.copy(managerName = newManagerName, clubRating = inputLayoutRating.text.toString())
+                        dbHelper.updateClub(login, selectedClub, newClub)
+                        Toast.makeText(this, "Manager name and club rating updated successfully", Toast.LENGTH_SHORT).show()
+                        dialog.dismiss()
+                        refreshClubTable()
+                    }
+
+                    dialogBuilderRating.setNegativeButton("Cancel") { dialogRating, _ ->
+                        dialogRating.dismiss()
+                    }
+
+                    val alertDialogRating = dialogBuilderRating.create()
+                    alertDialogRating.show()
                 } else {
                     Toast.makeText(this, "Please enter a valid manager name", Toast.LENGTH_SHORT).show()
                 }
             }
 
-            dialogBuilder.setNegativeButton("Cancel") { dialog, _ ->
-                dialog.dismiss()
+            dialogBuilderManager.setNegativeButton("Cancel") { dialogManager, _ ->
+                dialogManager.dismiss()
             }
 
-            val alertDialog = dialogBuilder.create()
-            alertDialog.show()
+            val alertDialogManager = dialogBuilderManager.create()
+            alertDialogManager.show()
         }
 
         builder.setNegativeButton("Cancel") { dialog, _ ->
@@ -182,6 +200,7 @@ class EditActivity : AppCompatActivity() {
         val alertDialog = builder.create()
         alertDialog.show()
     }
+
 
 
     private fun refreshClubTable() {
