@@ -21,8 +21,14 @@ class StartGame : AppCompatActivity() {
         val btnEdit = findViewById<Button>(R.id.btnEdit)
         val btnExit = findViewById<Button>(R.id.btnExit)
         val btnStart = findViewById<Button>(R.id.btnStart)
+        val btnAdd = findViewById<Button>(R.id.btnAdd)
 
         btnEdit.setOnClickListener {
+            val intent = Intent(this, EditActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnAdd.setOnClickListener {
             val intent = Intent(this, ClubCreation::class.java)
             startActivity(intent)
         }

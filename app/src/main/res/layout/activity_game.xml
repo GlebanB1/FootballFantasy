@@ -9,14 +9,32 @@
 
     <TextView
         android:id="@+id/textViewClubTable"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
+        android:layout_width="379dp"
+        android:layout_height="456dp"
+        android:background="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.166"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.8"
         tools:text="Club Table Placeholder" />
+
+    <Button
+        android:id="@+id/btnStart1"
+        android:layout_width="172dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="128dp"
+        android:fontFamily="@font/ubuntu_bold"
+        android:text="@string/Start_game"
+        android:textColor="#FEFEFE"
+        android:textSize="14sp"
+        app:backgroundTint="@color/blue_app"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewClubTable" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

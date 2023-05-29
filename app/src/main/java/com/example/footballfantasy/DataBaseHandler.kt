@@ -142,4 +142,24 @@ class DataBaseHandler(private val context: Context) : SQLiteOpenHelper(context, 
         return clubList
     }
 
+    fun updateClub(login: String, oldClub: FootballClub, newClub: FootballClub) {
+        val db = writableDatabase
+        val clubTableName = TABLE_NAME_PREFIX + login
+        val contentValues = ContentValues()
+        contentValues.put(COL_CLUB_NAME, newClub.clubName)
+        contentValues.put(COL_COUNTRY, newClub.country)
+        contentValues.put(COL_MANAGER_NAME, newClub.managerName)
+        contentValues.put(COL_CLUB_RATING, newClub.clubRating)
+        db.update(clubTableName, contentValues, "$COL_CLUB_NAME = ? AND $COL_COUNTRY = ? AND $COL_MANAGER_NAME = ? AND $COL_CLUB_RATING = ?", arrayOf(oldClub.clubName, oldClub.country, oldClub.managerName, oldClub.clubRating))
+        db.close()
+    }
+
+    fun deleteClub(login: String, club: FootballClub) {
+        val db = writableDatabase
+        val clubTableName = TABLE_NAME_PREFIX + login
+        db.delete(clubTableName, "$COL_CLUB_NAME = ? AND $COL_COUNTRY = ? AND $COL_MANAGER_NAME = ? AND $COL_CLUB_RATING = ?", arrayOf(club.clubName, club.country, club.managerName, club.clubRating))
+        db.close()
+    }
+
+
 }

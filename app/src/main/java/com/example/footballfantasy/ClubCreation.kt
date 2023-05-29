@@ -1,5 +1,6 @@
 package com.example.footballfantasy
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
@@ -57,11 +58,17 @@ class ClubCreation : AppCompatActivity() {
             if (result != -1L) {
                 Toast.makeText(this, "Club inserted successfully", Toast.LENGTH_SHORT).show()
                 clearFields()
+
+                // Redirect to StartGame activity
+                val intent = Intent(this, StartGame::class.java)
+                intent.putExtra("login", login)
+                startActivity(intent)
             }
         } else {
             Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
         }
     }
+
 
     private fun clearFields() {
         clubNameEditText.text.clear()

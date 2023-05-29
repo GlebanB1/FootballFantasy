@@ -1,7 +1,9 @@
 package com.example.footballfantasy
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.TextView
 
 class GameActivity : AppCompatActivity() {
@@ -10,6 +12,12 @@ class GameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
         supportActionBar?.hide()
+        val btnStart = findViewById<Button>(R.id.btnStart1)
+
+        btnStart.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
 
         val login = intent.getStringExtra("login")
         Log.d("GameActivity", "Login: $login")
