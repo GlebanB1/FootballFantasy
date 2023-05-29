@@ -5,18 +5,34 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 
 class GameActivity : AppCompatActivity() {
+    private lateinit var login: String
+    private lateinit var dbHelper: DataBaseHandler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
         supportActionBar?.hide()
+        login = intent.getStringExtra("login") ?: ""
+        dbHelper = DataBaseHandler(this)
+
         val btnStart = findViewById<Button>(R.id.btnStart1)
 
         btnStart.setOnClickListener {
-            val intent = Intent(this, MatchActivity::class.java)
-            startActivity(intent)
+            if (login != null) {
+                val clubs = dbHelper.getClubsByLogin(login!!)
+                if (clubs.isNotEmpty()) {
+                    val intent = Intent(this, MatchActivity::class.java)
+                    intent.putExtra("login", login)
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(this, "No clubs found for the login", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(this, "No login found", Toast.LENGTH_SHORT).show()
+            }
         }
 
         val login = intent.getStringExtra("login")
