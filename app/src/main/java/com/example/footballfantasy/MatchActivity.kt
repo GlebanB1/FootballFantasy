@@ -50,8 +50,8 @@ class MatchActivity : AppCompatActivity() {
             return
         }
 
-        val score1 = Random.nextInt(0, 5) // Random score for team 1 (0 to 4)
-        val score2 = Random.nextInt(0, 5) // Random score for team 2 (0 to 4)
+        val score1 = Random.nextInt(0, 6) // Random score for team 1 (0 to 5)
+        val score2 = Random.nextInt(0, 6) // Random score for team 2 (0 to 5)
 
         val result = "$team1 $score1 : $score2 $team2"
         textViewMatchResult.text = result
