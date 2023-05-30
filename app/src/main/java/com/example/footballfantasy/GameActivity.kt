@@ -1,12 +1,15 @@
 package com.example.footballfantasy
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 
+// this page is for looking and searching clubs from table
 class GameActivity : AppCompatActivity() {
     private lateinit var login: String
     private lateinit var dbHelper: DataBaseHandler
@@ -69,6 +72,29 @@ class GameActivity : AppCompatActivity() {
 
                 val textViewClubTable = findViewById<TextView>(R.id.textViewClubTable)
                 textViewClubTable.text = stringBuilder.toString()
+
+                val searchEditText = findViewById<EditText>(R.id.searchEditText)
+                val searchButton = findViewById<Button>(R.id.searchButton)
+                searchButton.setOnClickListener {
+                    val searchQuery = searchEditText.text.toString().trim()
+                    if (searchQuery.isNotEmpty()) {
+                        val searchResult = dbHelper.searchClub(login, searchQuery)
+                        if (searchResult.isNotEmpty()) {
+                            val searchResultBuilder = StringBuilder()
+                            for (club in searchResult) {
+                                searchResultBuilder.append("Club Name: ${club.clubName}\n")
+                                searchResultBuilder.append("Country: ${club.country}\n")
+                                searchResultBuilder.append("Manager Name: ${club.managerName}\n")
+                                searchResultBuilder.append("Rating: ${club.clubRating}\n\n")
+                            }
+                            textViewClubTable.text = searchResultBuilder.toString()
+                        } else {
+                            textViewClubTable.text = "No clubs found matching the search query."
+                        }
+                    } else {
+                        Toast.makeText(this, "Please enter a search query", Toast.LENGTH_SHORT).show()
+                    }
+                }
             } else {
                 val textViewClubTable = findViewById<TextView>(R.id.textViewClubTable)
                 textViewClubTable.text = "No clubs found for this login."

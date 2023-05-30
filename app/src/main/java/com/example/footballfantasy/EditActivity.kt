@@ -10,6 +10,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 
+// this page to edit your table with clubs and to start main game
+
 class EditActivity : AppCompatActivity() {
 
     private lateinit var login: String

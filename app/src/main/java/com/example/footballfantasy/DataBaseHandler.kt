@@ -5,14 +5,25 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
+import android.icu.text.SimpleDateFormat
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import java.util.*
 
 val DB_NAME = "Login_db"
 val TABLE_NAME_USERS = "Users"
 val COL_LOGIN = "login"
 val COL_ID = "id"
+
+// for each login their own club table
+
+// can be multiple users on one phone
+
+// for example for login "riyad" one table of clubs
+// and if you enter another login you will see only clubs which was created under this login
+
+// also it is saving date of creation and date of edition but i dont display it
 
 data class FootballClub(val clubName: String, val country: String, val managerName: String, val clubRating: String)
 
@@ -64,7 +75,8 @@ class DataBaseHandler(private val context: Context) : SQLiteOpenHelper(context, 
                 "$COL_CLUB_NAME TEXT, " +
                 "$COL_COUNTRY TEXT, " +
                 "$COL_MANAGER_NAME TEXT, " +
-                "$COL_CLUB_RATING TEXT)"
+                "$COL_CLUB_RATING TEXT, " +
+                "creationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP)"
         db.execSQL(createClubTable)
 
         val contentValues = ContentValues()
@@ -81,6 +93,7 @@ class DataBaseHandler(private val context: Context) : SQLiteOpenHelper(context, 
         return result
     }
 
+
     fun isLoginExists(login: String): Boolean {
         val db = this.readableDatabase
         val query = "SELECT $COL_LOGIN FROM $TABLE_NAME_USERS WHERE $COL_LOGIN = ?"
@@ -88,6 +101,37 @@ class DataBaseHandler(private val context: Context) : SQLiteOpenHelper(context, 
         val exists = cursor?.count ?: 0 > 0
         cursor?.close()
         return exists
+    }
+
+    fun searchClub(login: String, searchQuery: String): List<FootballClub> {
+        val clubList = mutableListOf<FootballClub>()
+        val db = readableDatabase
+        val clubTableName = TABLE_NAME_PREFIX + login
+
+        try {
+            val query = "SELECT * FROM $clubTableName WHERE $COL_CLUB_NAME LIKE ?"
+            val cursor = db.rawQuery(query, arrayOf("%$searchQuery%"))
+
+            if (cursor.moveToFirst()) {
+                while (!cursor.isAfterLast) {
+                    val clubName = cursor.getString(cursor.getColumnIndex(COL_CLUB_NAME))
+                    val country = cursor.getString(cursor.getColumnIndex(COL_COUNTRY))
+                    val managerName = cursor.getString(cursor.getColumnIndex(COL_MANAGER_NAME))
+                    val clubRating = cursor.getString(cursor.getColumnIndex(COL_CLUB_RATING))
+                    val club = FootballClub(clubName, country, managerName, clubRating)
+                    clubList.add(club)
+                    cursor.moveToNext()
+                }
+            }
+            cursor.close()
+        } catch (e: SQLiteException) {
+            // Handle the exception here
+            return emptyList() // or return a default value as needed
+        } finally {
+            db.close()
+        }
+
+        return clubList
     }
 
     fun getClubTableData(login: String): Cursor? {
@@ -161,6 +205,13 @@ class DataBaseHandler(private val context: Context) : SQLiteOpenHelper(context, 
         return loginId
     }
 
+    private fun getCurrentDateTime(): String {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        val date = Date()
+        return dateFormat.format(date)
+    }
+
+
 
     fun updateClub(login: String, club: FootballClub, newClub: FootballClub) {
         val db = writableDatabase
@@ -170,6 +221,7 @@ class DataBaseHandler(private val context: Context) : SQLiteOpenHelper(context, 
         contentValues.put(COL_COUNTRY, newClub.country)
         contentValues.put(COL_MANAGER_NAME, newClub.managerName)
         contentValues.put(COL_CLUB_RATING, newClub.clubRating)
+        contentValues.put("editionDate", getCurrentDateTime()) // Save the current date and time as the edition date
         db.update(
             clubTableName,
             contentValues,
@@ -178,6 +230,7 @@ class DataBaseHandler(private val context: Context) : SQLiteOpenHelper(context, 
         )
         db.close()
     }
+
 
     fun deleteClub(login: String, club: FootballClub) {
         val db = writableDatabase
