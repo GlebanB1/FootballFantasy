@@ -22,6 +22,12 @@ class GameActivity : AppCompatActivity() {
         dbHelper = DataBaseHandler(this)
 
         val btnStart = findViewById<Button>(R.id.btnStart1)
+        val btnBack = findViewById<Button>(R.id.btnback1)
+
+        btnBack.setOnClickListener {
+            val intent = Intent(this@GameActivity, StartGame::class.java)
+            startActivity(intent)
+        }
 
         btnStart.setOnClickListener {
             if (login != null) {

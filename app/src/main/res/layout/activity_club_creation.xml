@@ -52,8 +52,8 @@
         android:textColor="#0B1E51"
         android:textColorHint="@color/blue_app"
         android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@+id/view2"
-        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/view6"
+        app:layout_constraintStart_toStartOf="@+id/view6"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
@@ -70,8 +70,8 @@
         android:textColor="#0B1E51"
         android:textColorHint="@color/blue_app"
         android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@+id/view2"
-        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/view6"
+        app:layout_constraintStart_toStartOf="@+id/view6"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
@@ -88,8 +88,8 @@
         android:textColor="#0B1E51"
         android:textColorHint="@color/blue_app"
         android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@+id/view2"
-        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/view6"
+        app:layout_constraintStart_toStartOf="@+id/view6"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
@@ -106,8 +106,8 @@
         android:textColor="#0B1E51"
         android:textColorHint="@color/blue_app"
         android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@+id/view2"
-        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/view6"
+        app:layout_constraintStart_toStartOf="@+id/view6"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
@@ -122,8 +122,10 @@
         app:backgroundTint="@color/blue_app"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toBottomOf="@+id/erating" />
+        app:layout_constraintTop_toBottomOf="@+id/view6"
+        app:layout_constraintVertical_bias="0.303" />
 
     <View
         android:id="@+id/view2"
@@ -138,65 +140,75 @@
         android:id="@+id/textView6"
         android:layout_width="143dp"
         android:layout_height="38dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/ubuntu_bold"
         android:gravity=""
         android:text="@string/rating"
         android:textColor="#FEFEFE"
         android:textSize="15dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/view2"
-        app:layout_constraintHorizontal_bias="0.329"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/view6"
+        app:layout_constraintHorizontal_bias="0.143"
+        app:layout_constraintStart_toStartOf="@+id/view6"
         app:layout_constraintTop_toBottomOf="@+id/emanager" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="143dp"
         android:layout_height="38dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/ubuntu_bold"
         android:gravity=""
         android:text="@string/manager"
         android:textColor="#FEFEFE"
         android:textSize="15dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.314"
-        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/view6"
+        app:layout_constraintHorizontal_bias="0.143"
+        app:layout_constraintStart_toStartOf="@+id/view6"
         app:layout_constraintTop_toBottomOf="@+id/ecountry" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="143dp"
         android:layout_height="38dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/ubuntu_bold"
         android:gravity=""
         android:text="@string/country"
         android:textColor="#FEFEFE"
         android:textSize="15dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/view2"
-        app:layout_constraintHorizontal_bias="0.319"
-        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/view6"
+        app:layout_constraintHorizontal_bias="0.143"
+        app:layout_constraintStart_toStartOf="@+id/view6"
         app:layout_constraintTop_toBottomOf="@+id/eclubname" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="143dp"
         android:layout_height="38dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/ubuntu_bold"
         android:gravity=""
         android:text="@string/club"
         android:textColor="#FEFEFE"
         android:textSize="15dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.314"
+        app:layout_constraintEnd_toEndOf="@+id/view6"
+        app:layout_constraintHorizontal_bias="0.143"
+        app:layout_constraintStart_toStartOf="@+id/view6"
+        app:layout_constraintTop_toTopOf="@+id/view6" />
+
+    <View
+        android:id="@+id/view6"
+        android:layout_width="275dp"
+        android:layout_height="374dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
         app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintVertical_bias="0.229" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

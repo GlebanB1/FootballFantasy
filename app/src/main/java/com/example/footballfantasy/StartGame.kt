@@ -44,8 +44,8 @@ class StartGame : AppCompatActivity() {
         }
 
         btnExit.setOnClickListener {
-            val intent = Intent(this, ProfileActivity::class.java)
-            startActivity(intent)
+            finishAffinity();
+            System.exit(0);
         }
 
         btnStart.setOnClickListener {

@@ -16,5 +16,10 @@
     <string name="rating">Club rating:</string>
     <string name="create">Create club</string>
     <string name="exit">Exit</string>
+    <string name="back">Back</string>
+    <string name="search">Search</string>
+    <string name="editc">Edit club</string>
+    <string name="choose">Choose 2 teams</string>
+    <string name="clubs">Clubs</string>
 
 </resources>

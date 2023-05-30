@@ -8,64 +8,83 @@
     tools:context=".MatchActivity">
 
     <TextView
-        android:id="@+id/textViewTeam1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:background="@android:color/white"
-        android:textColor="@android:color/black"
-        android:padding="8dp"
-        android:text="Team 1:"
+        android:id="@+id/textView9"
+        android:layout_width="229dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/ubuntu_bold"
+        android:gravity=""
+        android:text="@string/choose"
+        android:textColor="#FEFEFE"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Spinner
-        android:id="@+id/spinnerTeam1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        app:layout_constraintStart_toEndOf="@id/textViewTeam1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/textViewTeam1"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"/>
 
     <TextView
         android:id="@+id/textViewTeam2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="72dp"
         android:background="@android:color/white"
-        android:textColor="@android:color/black"
         android:padding="8dp"
         android:text="Team 2:"
+        android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="@id/textViewTeam1"
         app:layout_constraintTop_toBottomOf="@id/spinnerTeam1" />
+
+    <Spinner
+        android:id="@+id/spinnerTeam1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:background="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/textViewTeam1"
+        app:layout_constraintTop_toTopOf="@id/textViewTeam1" />
 
     <Spinner
         android:id="@+id/spinnerTeam2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        app:layout_constraintStart_toEndOf="@id/textViewTeam2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/textViewTeam2"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/textViewTeam2"
+        app:layout_constraintTop_toTopOf="@id/textViewTeam2" />
+
+    <TextView
+        android:id="@+id/textViewTeam1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="68dp"
+        android:background="@android:color/white"
+        android:padding="8dp"
+        android:text="Team 1:"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonSimulateMatch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="168dp"
+        android:layout_width="178dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="140dp"
         android:fontFamily="@font/ubuntu_bold"
         android:onClick="simulateMatch"
         android:text="Simulate Match"
         android:textColor="#FEFEFE"
         android:textSize="14sp"
         app:backgroundTint="@color/blue_app"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/spinnerTeam2" />
 
@@ -73,14 +92,17 @@
         android:id="@+id/textViewMatchResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="132dp"
+        android:layout_marginTop="80dp"
         android:background="@android:color/white"
         android:padding="8dp"
         android:text=""
         android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonSimulateMatch" />
+        app:layout_constraintTop_toBottomOf="@id/buttonSimulateMatch"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
